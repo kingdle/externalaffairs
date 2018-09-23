@@ -45,7 +45,7 @@ let routes = [
             {
                 path: '',
                 name: 'profile',
-                component: (resolve)=>require(['./components/user/Profile'],resolve),
+                component: (resolve)=>require(['./components/buyers/Index'],resolve),
                 meta: {requiresAuth: true}
             },
             {
@@ -61,9 +61,9 @@ let routes = [
                 meta: {requiresAuth: true}
             },
             {
-                path: '/shop',
-                name: 'profile.Shop',
-                component: (resolve)=>require(['./components/shops/Shop'],resolve),
+                path: '/receptions',
+                name: 'profile.Reception',
+                component: (resolve)=>require(['./components/receptions/Receptions'],resolve),
                 meta: {requiresAuth: true}
             },
             {
@@ -73,13 +73,13 @@ let routes = [
                 meta: {requiresAuth: true}
             },
             {
-                path: '/orders',
+                path: '/gifts',
                 name: 'profile.Orders',
-                component: (resolve)=>require(['./components/orders/Orders'],resolve),
+                component: (resolve)=>require(['./components/buyers/Index'],resolve),
                 meta: {requiresAuth: true}
             },
             {
-                path: '/news',
+                path: '/works',
                 name: 'profile.News',
                 component: (resolve)=>require(['./components/news/News'],resolve),
                 meta: {requiresAuth: true}
@@ -115,13 +115,13 @@ let routes = [
                 meta: {requiresAuth: true}
             },
             {
-                path: '/seller',
+                path: '/hotel',
                 name: 'profile.Seller',
-                component: (resolve)=>require(['./components/sellers/Index'],resolve),
+                component: (resolve)=>require(['./components/buyers/Index'],resolve),
                 meta: {requiresAuth: true}
             },
             {
-                path: '/buyer',
+                path: '/config',
                 name: 'profile.Buyer',
                 component: (resolve)=>require(['./components/buyers/Index'],resolve),
                 meta: {requiresAuth: true}

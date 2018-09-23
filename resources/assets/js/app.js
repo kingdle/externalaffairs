@@ -13,6 +13,11 @@ import moment from 'moment';
 import VueMoment from 'vue-moment';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import VueQuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
 
 
 import zh_CN from './locale/zh_CN';
@@ -32,7 +37,7 @@ Vue.use(VueRouter);
 Vue.use(VeeValidate);
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI);
-
+Vue.use(VueQuillEditor, /* { default global options } */)
 require('moment/locale/zh-cn')
 Vue.use(VueMoment, {
     moment

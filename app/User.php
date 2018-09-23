@@ -38,4 +38,10 @@ class User extends Authenticatable
     public function girl(){
         return $this->hasOne('App\Girl','user_id','id');
     }
+    public function abroad(){
+        return $this->hasOne('App\Abroad','user_id','id');
+    }
+    public function reception(){
+        return $this->hasOne('App\Reception','user_id','id');
+    }
 }

@@ -9,6 +9,7 @@ export default{
         email: null,
         avatar_url: null,
         is_admin: null,
+        is_active: null,
     },
     mutations: {
         [types.UPDATE_PROFILE_ID](state, payload) {
@@ -38,6 +39,7 @@ export default{
             state.email = payload.user.email
             state.avatar_url = payload.user.avatar_url
             state.is_admin = payload.user.is_admin
+            state.is_active = payload.user.is_active
         },
         [types.UNSET_AUTH_USER](state) {
             state.authenticated = false
@@ -48,6 +50,7 @@ export default{
             state.email = null
             state.avatar_url = null
             state.is_admin = null
+            state.is_active = null
         }
     },
     actions: {

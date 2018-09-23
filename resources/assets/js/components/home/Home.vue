@@ -6,7 +6,7 @@
                     <div class="card-body mt-2">
                         <div class="title">
                             <span class="text-success text-bold m-r-5">|</span>
-                            <span class="vertical-middle">工作汇总</span>
+                            <span class="vertical-middle">工作汇总(测试数据)</span>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 col-12 mg-home-top">
@@ -67,19 +67,9 @@
                                 <span class="text-success text-bold m-r-5">|</span>
                                 <span class="vertical-middle">热门场馆</span>
                             </div>
-                            <!--<div class="col-12 text-center">-->
-                                <!--<div v-for="shop in shops" :key="shop.id" class="figure mr-4 text-center">-->
-                                    <!--<div class="contributor-pics">-->
-                                        <!--<a href="#">-->
-                                            <!--<img :src="shop.avatar+'!mp.v100'"-->
-                                                 <!--width="64px"-->
-                                                 <!--:alt="shop.title"-->
-                                                 <!--:title="shop.title">-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--<h6 class="shop-title pt-2 mb-0" :title="shop.title">{{shop.title}}</h6>-->
-                                <!--</div>-->
-                            <!--</div>-->
+                            <div class="col-12 text-center">
+                               暂停开发
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,19 +84,9 @@
                                 <span class="text-success text-bold m-r-5">|</span>
                                 <span class="vertical-middle">热门酒店</span>
                             </div>
-                            <!--<div class="col-12 text-center">-->
-                            <!--<div v-for="shop in shops" :key="shop.id" class="figure mr-4 text-center">-->
-                            <!--<div class="contributor-pics">-->
-                            <!--<a href="#">-->
-                            <!--<img :src="shop.avatar+'!mp.v100'"-->
-                            <!--width="64px"-->
-                            <!--:alt="shop.title"-->
-                            <!--:title="shop.title">-->
-                            <!--</a>-->
-                            <!--</div>-->
-                            <!--<h6 class="shop-title pt-2 mb-0" :title="shop.title">{{shop.title}}</h6>-->
-                            <!--</div>-->
-                            <!--</div>-->
+                            <div class="col-12 text-center">
+                                暂停开发
+                            </div>
                         </div>
                     </div>
                 </div>

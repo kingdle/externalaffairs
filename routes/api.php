@@ -21,13 +21,31 @@ Route::post('/user/profile/update', 'UsersController@update')->middleware('auth:
 
 //passport部分
 Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
-    Route::resource('/girls', 'GirlsController')->middleware('auth:api');
+    Route::resource('/abroads', 'AbroadsController')->middleware('auth:api');
+    Route::post('/abroad/update', 'AbroadsController@update')->middleware('auth:api');
+    Route::post('/abroad/listSize', 'AbroadsController@listSize')->middleware('auth:api');
+    Route::post('/abroad/upFile', 'AbroadsController@upFile')->middleware('auth:api');
+    Route::post('/abroad/destroyImage', 'AbroadsController@destroyImage')->middleware('auth:api');
+    Route::get('/abroad/queryNameList', 'AbroadsController@queryNameList')->middleware('auth:api');
+    Route::get('/abroad/queryDepartmentList', 'AbroadsController@queryDepartmentList')->middleware('auth:api');
+    Route::post('/abroad/queryResult', 'AbroadsController@queryResult')->middleware('auth:api');
+
+
+    //接待管理
+    Route::resource('/receptions', 'ReceptionsController')->middleware('auth:api');
+    Route::post('/reception/update', 'ReceptionsController@update')->middleware('auth:api');
+    Route::post('/reception/listSize', 'ReceptionsController@listSize')->middleware('auth:api');
+    Route::post('/reception/upFile', 'ReceptionsController@upFile')->middleware('auth:api');
+    Route::post('/reception/destroyImage', 'ReceptionsController@destroyImage')->middleware('auth:api');
+    Route::get('/reception/queryNationList', 'ReceptionsController@queryNationList')->middleware('auth:api');
+    Route::get('/reception/queryDepartmentList', 'ReceptionsController@queryDepartmentList')->middleware('auth:api');
+    Route::post('/reception/queryResult', 'ReceptionsController@queryResult')->middleware('auth:api');
+
+
     //users用户
     Route::resource('/users', 'UsersController')->middleware('auth:api');
     //上传图片
     Route::post('/imageUpload','UsersController@imageUpload')->middleware('auth:api');
-    //products项目分类
-    Route::resource('/products', 'ProductsController');
     //configs控制信息
     Route::resource('/configs', 'ConfigsController');
     //登录

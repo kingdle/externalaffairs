@@ -1,59 +1,153 @@
 <template>
     <div class="card-columns pt-3">
-        <div v-for="dynamic in dynamics" :key="dynamic.id" class="card card-img">
-            <div class="mg-news-img">
-                <img v-for="image in dynamic.pic" :src="image +'!mp.v300'" @click="handlePreview(image +'!mp.v1080')"
-                     data-toggle="modal" data-target=".dynamic-image-lg">
-            </div>
-            <div class="p-2">
-                <p class="card-text mt-2 mb-0">
-                    <router-link :to="{ name: 'Dynamic', params: { id: dynamic.id }}" class="text-info">
-                        {{ dynamic.content }}
-                    </router-link>
-                </p>
-                <p class="card-text">
-                    <small class="text-muted" v-for="sort in dynamic.sorts">
-                        <svg id="i-menu" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                            <path d="M4 8 L28 8 M4 16 L28 16 M4 24 L28 24" />
-                        </svg>
-                        {{sort.title}}
-                    </small>
-                    <small class="text-muted" v-for="tag in dynamic.tags">
-                        <svg id="i-tag" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="currentcolor"
-                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                            <circle cx="24" cy="8" r="2"/>
-                            <path d="M2 18 L18 2 30 2 30 14 14 30 Z"/>
-                        </svg>
-                        {{tag.name}}
-                    </small>
-                    <small class="text-muted">
-                        <svg id="i-clock" viewBox="0 0 32 32" width="10" height="10" fill="none"
-                             stroke="currentcolor" stroke-linecap="round"
-                             stroke-linejoin="round"
-                             stroke-width="2">
-                            <circle cx="16" cy="16" r="14"/>
-                            <path d="M16 8 L16 16 20 20"/>
-                        </svg>
-                        {{ dynamic.published_at | moment("from") }}
-                    </small>
-                </p>
-            </div>
-        </div>
         <div class="modal fade dynamic-image-lg" tabindex="-1" role="dialog" aria-labelledby="dynamicLargeImageLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">图片预览</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img width="100%" :src="dialogImageUrl"
-                             alt="" data-toggle="modal" data-target=".dynamic-image-lg">
-                    </div>
+                <div class="row">
+                    <div class="col-md-12 px-0">
+                        <div class="card flex-row mb-3 border-0">
+                            <div class="card-body mt-2">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="header-text-container">
+                                            <div class="mb-3">
+                                                <el-row>
+                                                    <el-col :span="2">
+                                                        <p class="vertical-middle">
+                                                            <span class="text-success text-bold m-r-5">|</span>
+                                                            订单列表
+                                                            <!--<mark>农户在访问"苗果"小程序时，会看到自己在您的苗场订购的苗子订单数量和品种。</mark>-->
+                                                        </p>
 
+                                                    </el-col>
+
+                                                </el-row>
+                                            </div>
+                                            <div class="body-container">
+                                                <div class="my-3 border-top">
+                                                    <!--<abroads :abroads="abroads"></abroads>-->
+                                                    <el-table
+                                                            :data="abroads"
+                                                            align="left"
+                                                            style="width: 100%"
+                                                    >
+                                                        <el-table-column
+                                                                prop="id"
+                                                                label="序号"
+                                                                sortable
+                                                                width="80"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                prop="name"
+                                                                label="姓名"
+                                                                sortable
+                                                                width="100"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                prop="phone"
+                                                                label="电话"
+                                                                sortable
+                                                                width="110"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                prop="tags.name"
+                                                                label="苗子品种"
+                                                                sortable
+                                                                width="110"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                prop="counts"
+                                                                label="数量(株)"
+                                                                sortable
+                                                                width="100"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                prop="unit_price"
+                                                                label="单价(元)"
+                                                                width="80"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                prop='start_at'
+                                                                label="育苗日期"
+                                                                sortable
+                                                                width="110"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                prop="end_at"
+                                                                label="送苗日期"
+                                                                sortable
+                                                                width="110"
+                                                        >
+                                                        </el-table-column>
+                                                        <el-table-column
+                                                                label="地址"
+                                                                sortable
+                                                        >
+                                                            <template slot-scope="scope">
+                                                                <span style="margin-left: 3px">{{ scope.row.address }}，{{ scope.row.villageInfo }}</span>
+                                                                <el-button type="text"
+                                                                           class="checkLocation-button"
+                                                                           icon="el-icon-location-outline"
+                                                                           data-toggle="modal"
+                                                                           data-target="#EditLocationModalCenter"
+                                                                           @click.native.prevent="checkLocation(scope.$index, scope.row)">
+                                                                </el-button>
+                                                            </template>
+                                                        </el-table-column>
+
+                                                        <el-table-column
+                                                                fixed="right"
+                                                                label="操作"
+                                                                width="120"
+                                                        >
+                                                            <template slot-scope="scope">
+                                                                <el-tooltip class="item" effect="dark" content="编辑"
+                                                                            placement="left">
+                                                                    <!--<el-button-->
+                                                                            <!--data-toggle="modal"-->
+                                                                            <!--data-target="#editOrderModalCenter"-->
+                                                                            <!--@click.native.prevent="handleEdit(scope.$index, scope.row)"-->
+                                                                            <!--type="primary" icon="el-icon-edit"-->
+                                                                            <!--size="mini">-->
+                                                                    <!--</el-button>-->
+                                                                </el-tooltip>
+                                                                <el-tooltip class="item" effect="dark" content="删除"
+                                                                            placement="top">
+                                                                    <el-button
+                                                                            @click.native.prevent="handleDelete(scope.$index, scope.row)"
+                                                                            type="info" icon="el-icon-delete"
+                                                                            size="mini">
+                                                                    </el-button>
+                                                                </el-tooltip>
+                                                            </template>
+                                                        </el-table-column>
+                                                    </el-table>
+                                                </div>
+                                                <el-pagination
+                                                        @size-change="handleSizeChange"
+                                                        @current-change="handleCurrentChange"
+                                                        :current-page="current_page"
+                                                        :page-sizes="[9, 20, 100, 300]"
+                                                        :page-size="9"
+                                                        :pager-count="pagerCount"
+                                                        layout="total, sizes, prev, pager, next, jumper"
+                                                        :total="pagination.total">
+                                                </el-pagination>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,11 +158,10 @@
 </template>
 <script>
     export default {
-        props: ['dynamics'],
+        props: ['abroads'],
         data() {
             return {
                 dialogImageUrl: '',
-
             }
         },
         methods: {
