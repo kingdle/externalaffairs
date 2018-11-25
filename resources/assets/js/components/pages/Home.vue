@@ -4,14 +4,14 @@
             <div class="col-12 w-100per m-b-100 overflow-auto">
                 <div class="w-1200 py-5 m-auto">
                     <h2 class="header text-center">
-                        青岛西海岸新区外事服务系统</h2>
+                        智能服务，承诺您的每一份嘱托</h2>
                     <!--<p class="header-ad text-sm text-center letter-10  m-b-45">-->
                         <!--驻外事务手机办理，掌心里的驻外服务平台</p>-->
                     <div class="my-0">
                         <div class="fl flex-4 text-center">
                             <a class="inline-block m-auto shop" href="#"><img
                                     class="hoverImg" style="width:288px;"
-                                    src="https://images.veg.kim/pc/externalaffairs-code.png">
+                                    src="/images/storehouse.png">
                             </a>
                             <h6 class="text-secondary pt-2 mb-0">打开微信扫一扫</h6>
                         </div>
@@ -21,10 +21,10 @@
         </div>
         <div class="row">
             <div class="link col-12 text-center">
-                <a href="https://veg.kim">青岛西海岸外事服务中心办公室主办</a><br>
+                <a href="http://www.hlqgroup.com">青岛乾通源物流有限公司</a><br>
                 <span class="mt-5 mb-3 text-muted">技术支持：苗果科技</span>
-                <p class="mt-5 mb-3 text-muted">© 2018-2022</p>
-                <p class="mb-5 text-muted">备案号：鲁ICP备11028443号-1</p>
+                <p class="mt-5 mb-3 text-muted">© 1996-2018</p>
+                <p class="mb-5 text-muted">备案号：鲁ICP备14021000号-1</p>
             </div>
         </div>
 
@@ -56,7 +56,7 @@
 
 <style>
     .header{
-        color: #1296db;
+        color: #505050;
         font-size:45px;
         margin-bottom: 40px;
     }

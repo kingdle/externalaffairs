@@ -44,4 +44,10 @@ class User extends Authenticatable
     public function reception(){
         return $this->hasOne('App\Reception','user_id','id');
     }
+    public function payment(){
+        return $this->hasOne('App\Payment','user_id','id');
+    }
+    public function payment_fee_item(){
+        return $this->hasOne('App\Payment_fee_item','user_id','id');
+    }
 }

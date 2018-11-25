@@ -32,6 +32,10 @@ axios.interceptors.request.use(function (config) {
     // Do something with request error
     return Promise.reject(error);
 });
+const config = {
+    errorBagName: 'errorBags', // change if property conflicts.
+    fieldsBagName: 'fieldBags',
+};
 Validator.localize('zh_CN', zh_CN);
 Vue.use(VueRouter);
 Vue.use(VeeValidate);

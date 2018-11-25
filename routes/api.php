@@ -21,26 +21,29 @@ Route::post('/user/profile/update', 'UsersController@update')->middleware('auth:
 
 //passport部分
 Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
-    Route::resource('/abroads', 'AbroadsController')->middleware('auth:api');
-    Route::post('/abroad/update', 'AbroadsController@update')->middleware('auth:api');
-    Route::post('/abroad/listSize', 'AbroadsController@listSize')->middleware('auth:api');
-    Route::post('/abroad/upFile', 'AbroadsController@upFile')->middleware('auth:api');
-    Route::post('/abroad/destroyImage', 'AbroadsController@destroyImage')->middleware('auth:api');
-    Route::get('/abroad/queryNameList', 'AbroadsController@queryNameList')->middleware('auth:api');
-    Route::get('/abroad/queryDepartmentList', 'AbroadsController@queryDepartmentList')->middleware('auth:api');
-    Route::post('/abroad/queryResult', 'AbroadsController@queryResult')->middleware('auth:api');
+    Route::resource('/payments', 'PaymentsController')->middleware('auth:api');
+    Route::post('/payment/update', 'PaymentsController@update')->middleware('auth:api');
+    Route::post('/payment/listSize', 'PaymentsController@listSize')->middleware('auth:api');
+    Route::post('/payment/upFile', 'PaymentsController@upFile')->middleware('auth:api');
+    Route::post('/payment/destroyImage', 'PaymentsController@destroyImage')->middleware('auth:api');
+    Route::get('/payment/queryNameList', 'PaymentsController@queryNameList')->middleware('auth:api');
+    Route::get('/payment/queryDepartmentList', 'PaymentsController@queryDepartmentList')->middleware('auth:api');
+    Route::post('/payment/queryResult', 'PaymentsController@queryResult')->middleware('auth:api');
 
 
-    //接待管理
-    Route::resource('/receptions', 'ReceptionsController')->middleware('auth:api');
-    Route::post('/reception/update', 'ReceptionsController@update')->middleware('auth:api');
-    Route::post('/reception/listSize', 'ReceptionsController@listSize')->middleware('auth:api');
-    Route::post('/reception/upFile', 'ReceptionsController@upFile')->middleware('auth:api');
-    Route::post('/reception/destroyImage', 'ReceptionsController@destroyImage')->middleware('auth:api');
-    Route::get('/reception/queryNationList', 'ReceptionsController@queryNationList')->middleware('auth:api');
-    Route::get('/reception/queryDepartmentList', 'ReceptionsController@queryDepartmentList')->middleware('auth:api');
-    Route::post('/reception/queryResult', 'ReceptionsController@queryResult')->middleware('auth:api');
+    //费用类别管理
+    Route::resource('/fees', 'FeesController')->middleware('auth:api');
+    Route::post('/fee/update', 'FeesController@update')->middleware('auth:api');
+    Route::post('/fee/listSize', 'FeesController@listSize')->middleware('auth:api');
+    Route::post('/fee/upFile', 'FeesController@upFile')->middleware('auth:api');
+    Route::post('/fee/destroyImage', 'FeesController@destroyImage')->middleware('auth:api');
+    Route::get('/feeList', 'FeesController@feeList')->middleware('auth:api');
+    Route::get('/fee/queryDepartmentList', 'FeesController@queryDepartmentList')->middleware('auth:api');
+    Route::post('/fee/queryResult', 'FeesController@queryResult')->middleware('auth:api');
 
+    //费用类别管理
+    Route::resource('/receivables', 'ReceivablesController')->middleware('auth:api');
+    Route::post('/receivable/byPaymentId', 'ReceivablesController@byPaymentId')->middleware('auth:api');
 
     //users用户
     Route::resource('/users', 'UsersController')->middleware('auth:api');

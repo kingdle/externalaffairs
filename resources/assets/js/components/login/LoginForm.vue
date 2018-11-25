@@ -1,6 +1,6 @@
 <template>
     <form class="form-signin" @submit.prevent="login">
-        <img class="mb-4" src="https://images.veg.kim/pc/externalaffairs-code.png" alt="" width="228">
+        <img class="mb-4" src="https://images.qdbfg.com/storehouse/logo.jpeg" alt="" width="228">
         <input v-model="phone"
                v-validate data-vv-rules="required|numeric" data-vv-as="手机号"
                placeholder="请输手机号"

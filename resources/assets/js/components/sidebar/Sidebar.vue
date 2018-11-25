@@ -1,106 +1,180 @@
 <template>
     <div class="sidebar-mg">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <router-link :to="{name: 'profile.Home'}" class="nav-link" activeClass="active" exact>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-home">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                        概况
-                    </router-link>
-                </a>
-            </li>
-            <li v-if="user.is_active === 1" class="nav-item">
-                <a class="nav-link" href="#">
-                    <router-link :to="{name: 'profile.News'}" class="nav-link" activeClass="active" exact>
-                        <svg id="i-compose" viewBox="0 0 32 32" width="24" height="24"
-                             fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                             class="feather feather-shopping-cart">
-                            <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
-                        </svg>
-                        审批事项
-                    </router-link>
-                </a>
-            </li>
+        <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+                 :collapse="isCollapse"
+                 background-color="#545c64"
+                 text-color="#fff"
+                 active-text-color="#409EFF">
+            <el-switch
+                    v-model="isCollapse"
+                    active-color="#909399"
+                    inactive-color="rgb(64, 158, 255)"
+                    :width="30">
+            </el-switch>
+            <el-submenu index="1">
+                <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">业务管理</span>
+                </template>
+                <el-submenu index="1-1">
 
-            <li v-if="user.is_admin === 1" class="nav-item">
-                <a class="nav-link" href="#">
-                    <router-link :to="{name: 'profile.Reception'}" class="nav-link" activeClass="active" exact>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-users">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                        接待方案
+                    <span slot="title"><i class="el-icon-circle-plus-outline"></i>入库</span>
+                    <router-link :to="{name: 'profile.Inletplan'}" exact>
+                        <el-menu-item index="1-1-1">入库计划</el-menu-item>
                     </router-link>
-                </a>
-            </li>
-            <li v-if="user.is_admin === 1" class="nav-item">
-                <a class="nav-link" href="#">
-                    <router-link :to="{name: 'profile.Orders'}" class="nav-link" activeClass="active" exact>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-shopping-cart">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                        礼品
+                    <router-link :to="{name: 'profile.Inlet'}" exact>
+                        <el-menu-item index="1-1-2">月台收货</el-menu-item>
                     </router-link>
-                </a>
-            </li>
-            <li v-if="user.is_admin === 1" class="nav-item">
-                <a class="nav-link" href="#">
-                    <router-link :to="{name: 'profile'}" class="nav-link" activeClass="active" exact>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                        场馆
+                    <!--<el-menu-item index="1-1-3">入库单打印</el-menu-item>-->
+                </el-submenu>
+                <el-submenu index="1-2">
+                    <span slot="title"><i class="el-icon-remove-outline"></i>出库</span>
+                    <router-link :to="{name: 'profile.Outletplan'}" exact>
+                        <el-menu-item index="1-2-1">出库计划</el-menu-item>
                     </router-link>
-                </a>
-            </li>
-            <li v-if="user.is_admin === 1" class="nav-item">
-                <a class="nav-link" href="#">
-                    <router-link :to="{name: 'profile.Seller'}" class="nav-link" activeClass="active" exact>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                        酒店
+                    <router-link :to="{name: 'profile.Outlet'}" exact>
+                        <el-menu-item index="1-2-2">月台出货</el-menu-item>
                     </router-link>
-                </a>
-            </li>
-            <li v-if="user.is_admin === 1" class="nav-item">
-                <a class="nav-link" href="#">
-                    <router-link :to="{name: 'profile.Buyer'}" class="nav-link" activeClass="active" exact>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        设置
+                    <!--<el-menu-item index="1-2-3">出库单打印</el-menu-item>-->
+                </el-submenu>
+                <router-link :to="{name: 'profile.Transfers'}" exact>
+                    <el-menu-item index="1-3">
+                        <span slot="title"><i class="el-icon-sort"></i>拆票(货转)</span>
+                    </el-menu-item>
+                </router-link>
+                <router-link :to="{name: 'profile.Positions'}" exact>
+                    <el-menu-item index="1-4">
+                        <span slot="title"><i class="el-icon-location"></i>库位图</span>
+                    </el-menu-item>
+                </router-link>
+                <router-link :to="{name: 'profile.Changes'}" exact>
+                    <el-menu-item index="1-5">
+                        <span slot="title"><i class="el-icon-refresh"></i>货物变更</span>
+                    </el-menu-item>
+                </router-link>
+            </el-submenu>
+            <el-submenu index="2">
+                <template slot="title">
+                    <i class="el-icon-success"></i>
+                    <span slot="title">费用管理</span>
+                </template>
+                <router-link :to="{name: 'profile.Charges'}" exact>
+                    <el-menu-item index="2-1">
+                        <span slot="title">出/入库收费</span>
+                    </el-menu-item>
+                </router-link>
+                <el-menu-item index="2-2">
+                    <span slot="title">月结收费</span>
+                </el-menu-item>
+                <router-link :to="{name: 'profile.Payments'}" exact>
+                <el-menu-item index="2-3">
+                    <span slot="title">付费信息录入</span>
+                </el-menu-item>
+                </router-link>
+                <el-menu-item index="2-4">
+                    <span slot="title">费用审批</span>
+                </el-menu-item>
+                <el-submenu index="2-5">
+                    <span slot="title">费用统计</span>
+                    <router-link :to="{name: 'profile.Charges-customer'}" exact>
+                        <el-menu-item index="2-5-1">客户收费明细</el-menu-item>
                     </router-link>
-                </a>
-            </li>
-            <!--<li v-if="user.is_admin === 1" class="nav-item">-->
-                <!--<a class="nav-link" href="#">-->
-                    <!--<router-link :to="{name: 'profile.Seed'}" class="nav-link" activeClass="active" exact>-->
-                        <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>-->
-                        <!--商户管理-->
-                    <!--</router-link>-->
-                <!--</a>-->
-            <!--</li>-->
-
-        </ul>
+                    <el-menu-item index="2-5-2">客户付费明细</el-menu-item>
+                    <el-menu-item index="2-5-3">垫付信息查询</el-menu-item>
+                    <el-menu-item index="2-5-4">现金收费查询</el-menu-item>
+                    <el-menu-item index="2-5-5">仓储费查询</el-menu-item>
+                </el-submenu>
+            </el-submenu>
+            <router-link :to="{name: 'profile.Statistics'}" exact>
+                <el-menu-item index="3">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">统计报表</span>
+                </el-menu-item>
+            </router-link>
+            <el-submenu index="4">
+                <template slot="title">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">基础设置</span>
+                </template>
+                <router-link :to="{name: 'profile.Customers'}" exact>
+                    <el-menu-item index="4-1">
+                        <span slot="title">客户信息录入</span>
+                    </el-menu-item>
+                </router-link>
+                <router-link :to="{name: 'profile.Agreements'}" exact>
+                    <el-menu-item index="4-2">
+                        <span slot="title">客户协议管理</span>
+                    </el-menu-item>
+                </router-link>
+                <router-link :to="{name: 'profile.Fees'}" exact>
+                    <el-menu-item index="4-4">
+                        <span slot="title">基础费用管理</span>
+                    </el-menu-item>
+                </router-link>
+                <router-link :to="{name: 'profile.Positions'}" exact>
+                    <el-menu-item index="4-5">
+                        <span slot="title">库位管理</span>
+                    </el-menu-item>
+                </router-link>
+                <router-link :to="{name: 'profile.Users'}" exact>
+                    <el-menu-item index="4-6">
+                        <span slot="title">用户管理</span>
+                    </el-menu-item>
+                </router-link>
+                <el-menu-item index="4-7">
+                    <span slot="title">权限分配</span>
+                </el-menu-item>
+                <el-menu-item index="4-8">
+                    <span slot="title">角色管理</span>
+                </el-menu-item>
+            </el-submenu>
+        </el-menu>
     </div>
 </template>
+<style>
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
+        min-height: 400px;
+    }
+
+    .sidebar-mg:not(.el-menu--collapse) {
+        min-height: 400px;
+    }
+
+    .sidebar-mg {
+        background-color: #545c64;
+        color: #fff;
+        text-align: left;
+    }
+
+    .sidebar-mg, .el-main {
+        overflow: auto;
+        -webkit-box-sizing: border-box;
+    }
+
+    .el-switch {
+        margin: 20px 20px 10px 20px;
+    }
+
+    .el-menu {
+        border-right: 0px;
+    }
+</style>
 
 <script>
-    import {mapState} from 'vuex'
     export default {
-        computed: {
-            ...mapState({
-                    user: state => state.AuthUser
-                }
-            )
+        data() {
+            return {
+                isCollapse: false,
+            };
+        },
+        methods: {
+            handleOpen(key, keyPath) {
+
+            },
+            handleClose(key, keyPath) {
+
+            }
         }
     }
 </script>

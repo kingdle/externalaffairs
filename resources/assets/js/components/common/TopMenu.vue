@@ -3,7 +3,7 @@
         <div class="container-fluid px-0">
             <div class="navbar-header">
                 <router-link to="/" class="navbar-brand" exact>
-                    <img src="https://images.veg.kim/pc/externalaffairs-logo.png" alt="外事服务系统" width="42" height="42">
+                    <img src="/images/logo-sm.png" alt="仓储物流管理系统" width="260" height="50">
                 </router-link>
                 <div v-if="user.authenticated" class="d-block d-sm-none d-none d-sm-block d-md-none float-right pt-2">
                     <button class="navbar-toggler btn btn-outline-secondary btn-sm pt-2 px-0" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,18 +26,23 @@
                         </button>
                     </router-link>
                     <router-link v-if="user.authenticated" :to="{name: 'profile.Home'}" tag="li">
-                        <div class="btn-group">
-                            <!--<img class="rounded border-bottom user-top-avatar" :src=user.avatar>-->
-                            <button type="button" class="btn btn-success btn-sm user-top-phone" data-placement="bottom" title="控制台">
-                                <span>{{ user.phone }}</span>
-                            </button>
-                            <button @click.prevent="logout" type="button"
-                                    class="btn btn-info btn-sm" data-placement="bottom" title="退出">
-                                <svg id="i-signout" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                    <path d="M28 16 L8 16 M20 8 L28 16 20 24 M11 28 L3 28 3 4 11 4" />
-                                </svg>
-                            </button>
-                        </div>
+                        <el-badge :value="200" :max="99" class="message">
+                            <el-button size="small" circle icon="el-icon-message"></el-button>
+                        </el-badge>
+                        <el-button type="primary" size="small" round>{{user.nickname}}</el-button>
+                        <el-button size="small" type="danger" @click="logout" icon="el-icon-close" circle></el-button>
+                        <!--<div class="btn-group">-->
+                            <!--&lt;!&ndash;<img class="rounded border-bottom user-top-avatar" :src=user.avatar>&ndash;&gt;-->
+                            <!--<button type="button" class="btn btn-success btn-sm user-top-phone" data-placement="bottom" title="控制台">-->
+                                <!--<span>{{ user.phone }}</span>-->
+                            <!--</button>-->
+                            <!--<button @click.prevent="logout" type="button"-->
+                                    <!--class="btn btn-info btn-sm" data-placement="bottom" title="退出">-->
+                                <!--<svg id="i-signout" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">-->
+                                    <!--<path d="M28 16 L8 16 M20 8 L28 16 20 24 M11 28 L3 28 3 4 11 4" />-->
+                                <!--</svg>-->
+                            <!--</button>-->
+                        <!--</div>-->
                     </router-link>
                 </ul>
             </div>
@@ -56,6 +61,20 @@
             )
         },
         methods: {
+
+        },
+        data() {
+            return {
+                isCollapse: true
+            };
+        },
+        methods: {
+            handleOpen(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                console.log(key, keyPath);
+            },
             logout()
             {
                 this.$store.dispatch('logoutRequest').then(response => {
@@ -67,9 +86,11 @@
 </script>
 <style>
     .navbar {
-        background-color: #f8f8f8;
-        border-bottom: 1px solid #f1f1f1;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+        background-color: #ffffff;
+        /*border-bottom: 1px solid #f1f1f1;*/
+        /*box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);*/
     }
-
+    .message {
+        margin-right: 40px;
+    }
 </style>

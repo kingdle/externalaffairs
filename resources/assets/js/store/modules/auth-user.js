@@ -4,6 +4,8 @@ export default{
         authenticated: false,
         id: null,
         name: null,
+        username: null,
+        nickname: null,
         phone: null,
         avatar: null,
         email: null,
@@ -17,6 +19,12 @@ export default{
         },
         [types.UPDATE_PROFILE_NAME](state, payload) {
             state.name = payload.value
+        },
+        [types.UPDATE_PROFILE_USERNAME](state, payload) {
+            state.username = payload.value
+        },
+        [types.UPDATE_PROFILE_NICKNAME](state, payload) {
+            state.nickname = payload.value
         },
         [types.UPDATE_PROFILE_PHONE](state, payload) {
             state.phone = payload.value
@@ -34,6 +42,8 @@ export default{
             state.authenticated = true
             state.id = payload.user.id
             state.name = payload.user.name
+            state.username = payload.user.username
+            state.nickname = payload.user.nickname
             state.phone = payload.user.phone
             state.avatar = payload.user.avatar
             state.email = payload.user.email

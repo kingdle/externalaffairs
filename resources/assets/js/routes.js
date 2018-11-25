@@ -34,7 +34,7 @@ let routes = [
     },
     {
         path: '/profile',
-        component: (resolve)=>require(['./components/user/ProfileWrapper'],resolve),
+        component: (resolve)=>require(['./components/profiles/ProfileWrapper'],resolve),
         children: [
             {
                 path: '/confirm',
@@ -124,6 +124,96 @@ let routes = [
                 path: '/config',
                 name: 'profile.Buyer',
                 component: (resolve)=>require(['./components/buyers/Index'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/fees',
+                name: 'profile.Fees',
+                component: (resolve)=>require(['./components/fees/Fees'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/customers',
+                name: 'profile.Customers',
+                component: (resolve)=>require(['./components/customers/Customers'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/agreements',
+                name: 'profile.Agreements',
+                component: (resolve)=>require(['./components/agreements/Agreements'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/positions',
+                name: 'profile.Positions',
+                component: (resolve)=>require(['./components/positions/Positions'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/users',
+                name: 'profile.Users',
+                component: (resolve)=>require(['./components/users/Users'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/inletplan',
+                name: 'profile.Inletplan',
+                component: (resolve)=>require(['./components/inletplan/Inletplan'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/inlet',
+                name: 'profile.Inlet',
+                component: (resolve)=>require(['./components/inlet/Inlet'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/outletplan',
+                name: 'profile.Outletplan',
+                component: (resolve)=>require(['./components/outletplan/Outletplan'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/outlet',
+                name: 'profile.Outlet',
+                component: (resolve)=>require(['./components/outlet/Outlet'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/transfers',
+                name: 'profile.Transfers',
+                component: (resolve)=>require(['./components/transfers/Transfers'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/changes',
+                name: 'profile.Changes',
+                component: (resolve)=>require(['./components/changes/Changes'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/charges',
+                name: 'profile.Charges',
+                component: (resolve)=>require(['./components/charges/Charges'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/charges-customer',
+                name: 'profile.Charges-customer',
+                component: (resolve)=>require(['./components/charges-customer/Charges-customer'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/payments',
+                name: 'profile.Payments',
+                component: (resolve)=>require(['./components/payments/Payments'],resolve),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: '/statistics',
+                name: 'profile.Statistics',
+                component: (resolve)=>require(['./components/statistics/Statistics'],resolve),
                 meta: {requiresAuth: true}
             },
         ],

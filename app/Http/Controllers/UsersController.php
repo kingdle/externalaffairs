@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserCollection;
 use App\Location;
 use App\User;
 use Auth;
@@ -17,6 +18,11 @@ class UsersController extends Controller
     function __construct(Wxxcx $wxxcx)
     {
         $this->wxxcx = $wxxcx;
+    }
+    public function index()
+    {
+        $users = User::where('is_active','1')->orderBy('id', 'desc')->paginate(9);
+        return new UserCollection($users);
     }
     public function weapplogin(Request $request)
     {

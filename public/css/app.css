@@ -10497,7 +10497,7 @@ li {
 }
 
 .blue {
-  color: #1296db;
+  color: #0966ac;
 }
 
 .red {
@@ -10506,7 +10506,6 @@ li {
 
 .navbar {
   padding: 0.5rem 1.25rem;
-  margin-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -10534,8 +10533,8 @@ li {
 
 .btn-success {
   color: #fff;
-  background-color: #1296db;
-  border-color: #1296db;
+  background-color: #0966ac;
+  border-color: #0966ac;
 }
 
 .btn-success:hover {
@@ -10545,31 +10544,24 @@ li {
 }
 
 .help-block {
-  color: #1296db;
+  color: #0966ac;
 }
 
 .form-control.is-invalid {
-  border-color: #1296db;
+  border-color: #0966ac;
 }
 
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #1296db;
-  border-color: #1296db;
+  background-color: #0966ac;
+  border-color: #0966ac;
 }
 
 .list-group-item.active:hover {
   color: #fff;
   background-color: #f05d0d;
   border-color: #f05d0d;
-}
-
-.navbar {
-  padding: 0.5rem 1.25rem;
-  margin-bottom: 1rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .bg-light {
@@ -10641,7 +10633,7 @@ svg:not(:root) {
 
 .mc-image-uploader {
   height: 30px;
-  color: #1296db;
+  color: #0966ac;
   border: none;
   margin: 10px auto;
 }
@@ -10666,7 +10658,7 @@ svg:not(:root) {
 
 .list-group li a {
   z-index: 2;
-  color: #1296db;
+  color: #0966ac;
 }
 
 .b-b {

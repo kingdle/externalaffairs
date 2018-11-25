@@ -199,4 +199,7 @@
     .red{
         color:#d71342 !important;
     }
+    .card {
+        border: 1px solid #f5f5f5 !important;
+    }
 </style>

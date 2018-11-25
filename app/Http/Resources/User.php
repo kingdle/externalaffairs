@@ -22,6 +22,8 @@ class User extends JsonResource
             'email' => $this->email,
 //            'avatar'=>$this->avatar,
             'avatar_url' => $this->avatar_url,
+            'nickname' => $this->nickname,
+            'username' => $this->username,
             'is_active' => $this->is_active,
             'is_admin' => $this->is_admin,
             'updated_at'=>$this->updated_at,

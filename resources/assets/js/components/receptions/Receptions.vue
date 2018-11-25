@@ -221,7 +221,7 @@
                                             <el-col :span="8">
                                                 <span class="broad-title">
                                                     <span class="text-success text-bold m-r-5">|</span>
-                                                    接待方案统计表
+                                                    物流部客户收（付）款列表2
                                                 </span>
                                             </el-col>
                                             <el-col :span="10">
