@@ -3,7 +3,7 @@
         <div class="container-fluid px-0">
             <div class="navbar-header">
                 <router-link to="/" class="navbar-brand" exact>
-                    <img src="/images/logo-sm.png" alt="仓储物流管理系统" width="260" height="50">
+                    <img src="/images/logo-sm.png" alt="仓储物流管理系统" width="250" height="50">
                 </router-link>
                 <div v-if="user.authenticated" class="d-block d-sm-none d-none d-sm-block d-md-none float-right pt-2">
                     <button class="navbar-toggler btn btn-outline-secondary btn-sm pt-2 px-0" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,9 +26,9 @@
                         </button>
                     </router-link>
                     <router-link v-if="user.authenticated" :to="{name: 'profile.Home'}" tag="li">
-                        <el-badge :value="200" :max="99" class="message">
-                            <el-button size="small" circle icon="el-icon-message"></el-button>
-                        </el-badge>
+                        <!--<el-badge :value="200" :max="99" class="message">-->
+                            <!--<el-button size="small" circle icon="el-icon-message"></el-button>-->
+                        <!--</el-badge>-->
                         <el-button type="primary" size="small" round>{{user.nickname}}</el-button>
                         <el-button size="small" type="danger" @click="logout" icon="el-icon-close" circle></el-button>
                         <!--<div class="btn-group">-->

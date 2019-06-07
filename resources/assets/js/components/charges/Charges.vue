@@ -182,7 +182,7 @@
                     <el-col :span="6">
                             <span class="broad-title">
                                 <span class="text-success text-bold m-r-5">|</span>
-                                出/入库收费
+                                文书管理
                             </span>
                     </el-col>
                     <el-col :span="10">
@@ -190,25 +190,25 @@
                             <el-autocomplete
                                     v-model="stateName"
                                     :fetch-suggestions="querySearchAsync"
-                                    placeholder="提单号"
+                                    placeholder="编号查询"
                                     @select="handleSelect"
                                     prefix-icon="el-icon-search"
                             ></el-autocomplete>
                             <el-autocomplete
                                     v-model="stateName"
                                     :fetch-suggestions="querySearchAsync"
-                                    placeholder="客户名"
+                                    placeholder="身份证查询"
                                     @select="handleSelect"
                                     prefix-icon="el-icon-search"
                             ></el-autocomplete>
                         </div>
                     </el-col>
                     <el-col :span="8">
-                        <span class="fees">合计：<span class="fees-price">￥20000.00</span>元</span>
-                        <el-button style="margin-right:10px;" type="primary"
-                                   icon="el-icon-circle-plus"
-                                   @click="dialogFormVisible = true">合并收费
-                        </el-button>
+                        <!--<span class="fees">合计：<span class="fees-price">￥20000.00</span>元</span>-->
+                        <!--<el-button style="margin-right:10px;" type="primary"-->
+                                   <!--icon="el-icon-circle-plus"-->
+                                   <!--@click="dialogFormVisible = true">合并收费-->
+                        <!--</el-button>-->
                         <!--<el-button type="success" icon="el-icon-refresh"-->
                                    <!--@click="Refresh">刷新-->
                         <!--</el-button>-->
@@ -227,54 +227,54 @@
                         width="55">
                 </el-table-column>
                 <el-table-column
-                        prop="extract_id"
-                        label="提单号"
+                        prop="number_id"
+                        label="案件编号"
                         sortable
-                        width="180"
+                        width="220"
+                >
+                </el-table-column>
+                <el-table-column
+                        prop=""
+                        label="文书名"
+                        sortable
+                        width="120"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="customer"
-                        label="客户名称"
-                        sortable
-                        width="180"
-                >
-                </el-table-column>
-                <el-table-column
-                        prop="goods_name"
-                        label="品名"
+                        label="涉案人"
                         sortable
                         width="100"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="quantity"
-                        label="数量(吨)"
+                        prop="packing"
+                        label="身份证号"
                         sortable
-                        width="120"
+                        width="220"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="price_income_package"
-                        label="协议包干单价"
+                        prop="quantity"
+                        label="住址"
                         width="130"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="price_cost_package"
-                        label="实际包干单价"
+                        prop="weight_box"
+                        label="文化程度"
                         width="130"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="price_income_package"
-                        label="应收(元)"
+                        label="立案日期"
                         width="120"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="price_cost_package"
-                        label="应付(元)"
+                        label="导入日期"
                         width="120"
                 >
                 </el-table-column>

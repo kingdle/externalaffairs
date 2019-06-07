@@ -1,88 +1,38 @@
 <template>
     <div class="mg-news">
-        <el-dialog title="新建入库计划" :visible.sync="dialogFormVisible">
+        <el-dialog title="导入word案件" :visible.sync="dialogFormVisible">
             <el-form :inline="true" ref="addForm" :model="addForm" label-width="150px" size="medium">
                 <div>
-                    <el-form-item label="客户名称">
+                    <el-form-item label="刑事编号">
                         <el-input class="textarea-width" type="input" v-model="addForm.customer"
                                   clearable
-                                  placeholder="青岛乾通源物流有限公司"></el-input>
+                                  placeholder="（xxx）鲁0211刑初xxx号"></el-input>
                     </el-form-item>
                 </div>
-                <el-form-item label="品名">
-                    <el-input v-model="addForm.goods_name"
-                              clearable
-                              placeholder="STR20-泰国混合橡胶">
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="包装">
-                    <el-input v-model="addForm.packing"
-                              clearable
-                              placeholder="托盘10*20"></el-input>
-                </el-form-item>
-                <el-form-item label="清单号">
-                    <el-input v-model="addForm.number_id"
-                              clearable
-                              placeholder="421020181000019180">
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="提单号">
-                    <el-input v-model="addForm.extract_id"
-                              clearable
-                              placeholder="COAU7120923550"></el-input>
-                </el-form-item>
+                <div>
+                    <el-form-item label="法院编号">
+                        <el-input class="textarea-width" type="input" v-model="addForm.customer"
+                                  clearable
+                                  placeholder="青黄岛检职检刑诉（xxx）xxx号"></el-input>
+                    </el-form-item>
+                </div>
 
-                <el-form-item label="箱量净重(千克)">
-                    <el-input-number v-model="addForm.weight_box"
-                                     @input="weightBoxChange($event)"
-                                     clearable
-                                     placeholder="201600"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="append">kg</template>
-                    </el-input-number>
-                </el-form-item>
-                <el-form-item label="数量(吨)">
-                    <el-input-number v-model="addForm.quantity"
-                                     @input="quantityChange($event)"
-                                     clearable
-                                     placeholder="201.60"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="append">t</template>
-                    </el-input-number>
-                </el-form-item>
-                <el-form-item label="协议包干单价(元)">
-                    <el-input-number v-model="addForm.price_income_package"
-                                     @input="incomePackageChange($event)"
-                                     clearable
-                                     placeholder="110.00"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="prepend">￥</template>
-                    </el-input-number>
-                </el-form-item>
-                <el-form-item label="实际包干单价(元)">
-                    <el-input-number v-model="addForm.price_cost_package"
-                                     @input="costPackageChange($event)"
-                                     clearable
-                                     placeholder="12.08"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="prepend">￥</template>
-                    </el-input-number>
-                </el-form-item>
 
                 <div class="group-input">
-                    <el-form-item label="包干费收入-小计(元)">
-                        <el-input-number v-model="addForm.fee_bale_receivable"
-                                         @input="baleReceivableChange($event)"
-                                         placeholder="0.00"
-                                         :precision="2"
-                                         clearable
-                                         :disabled="true">
-                            <template slot="prepend">￥</template>
-                        </el-input-number>
+                    <el-form-item label="上传word文件">
+                        <el-upload
+                                class="upload-demo"
+                                action="https://jsonplaceholder.typicode.com/posts/"
+                                :on-preview="handlePreview"
+                                :on-remove="handleRemove"
+                                :before-remove="beforeRemove"
+                                multiple
+                                :limit="3"
+                                :on-exceed="handleExceed"
+                                :file-list="fileList">
+                            <el-button size="small" type="primary">点击上传</el-button>
+                            <div slot="tip" class="el-upload__tip">只能上传单个word文件，且不超过10M大小</div>
+                        </el-upload>
                     </el-form-item>
                     <el-form-item label="备注">
                         <el-input v-model="addForm.remarks"
@@ -98,68 +48,69 @@
                 <el-button type="primary" @click="addBroad">确 定</el-button>
             </div>
         </el-dialog>
-        <el-dialog title="新增费用" :visible.sync="addFeeFormVisible">
+        <el-dialog title="生成文书" :visible.sync="addFeeFormVisible">
             <el-row>
                 <el-row>
                     <el-col :span="8">
                         <div class="grid-content bg-purple">
-                            应收：{{receivablesForm.fee_receivable}}
+                            文书模板总数：20
                         </div>
                     </el-col>
                     <el-col :span="8">
                         <div class="grid-content bg-purple-light">
-                            应付：{{receivablesForm.fee_payable}}
+                            已生成文书：10
                         </div>
                     </el-col>
                     <el-col :span="8">
                         <div class="grid-content bg-purple">
-                            实际收入：{{receivablesForm.fee_payable}}
+                            已打印文书：5
                         </div>
                     </el-col>
                 </el-row>
             </el-row>
             <el-form class="fee-add" :inline="true" ref="addFeeForm" :model="addFeeForm" label-width="120px"
                      size="medium">
-                <el-form-item label="费用类别">
-                    <el-select v-model="addFeeForm.fee_id" filterable placeholder="请选择">
-                        <el-option
-                                v-for="item in fees"
-                                :key="item.id"
-                                :label="item.fee_name_scale"
-                                :value="item.id">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="收费金额">
+                <!--<el-form-item label="费用类别">-->
+                    <!--<el-select v-model="addFeeForm.fee_id" filterable placeholder="请选择">-->
+                        <!--<el-option-->
+                                <!--v-for="item in fees"-->
+                                <!--:key="item.id"-->
+                                <!--:label="item.fee_name_scale"-->
+                                <!--:value="item.id">-->
+                        <!--</el-option>-->
+                    <!--</el-select>-->
+                <!--</el-form-item>-->
+                <el-form-item label="文书查询">
                     <el-input v-model="addFeeForm.fee_sum"
                               clearable
-                              placeholder="10.00">
+                              placeholder="请输入文书名称关键字">
                     </el-input>
                 </el-form-item>
-                <el-button class="fee-button" type="primary" @click="addReceivable" size="mini">添加</el-button>
+                <el-button class="fee-button" type="primary" @click="addReceivable" size="mini">查询</el-button>
+                <el-button class="fee-button" type="info" @click="addReceivable" size="mini">批量生成</el-button>
             </el-form>
             <el-table
                     :data="receivables"
                     style="width: 100%; margin-bottom: 20px;">
                 <el-table-column
                         prop="fee_name"
-                        label="费用名称"
+                        label="文书名称"
                         width="180">
                 </el-table-column>
                 <el-table-column
                         prop="fee_sum"
-                        label="金额"
+                        label="版本号"
                         width="180">
                 </el-table-column>
                 <el-table-column
                         prop="fee_scale"
-                        label="收费标准">
+                        label="生成情况">
                 </el-table-column>
                 <el-table-column
                         prop="fee_state"
-                        label="是否支出项"
+                        label="打印情况"
                         width="130"
-                        :filters="[{ text: '未支出', value: '0' }, { text: '已支出', value: '1' }]"
+                        :filters="[{ text: '未打印', value: '0' }, { text: '已打印', value: '1' }]"
                         :filter-method="filterTag"
                         filter-placement="bottom-end">
                     <template slot-scope="scope">
@@ -253,7 +204,7 @@
                     <el-col :span="6">
                             <span class="broad-title">
                                 <span class="text-success text-bold m-r-5">|</span>
-                                入库计划
+                                我的案件
                             </span>
                     </el-col>
                     <el-col :span="12">
@@ -261,7 +212,7 @@
                             <el-autocomplete
                                     v-model="stateName"
                                     :fetch-suggestions="querySearchAsync"
-                                    placeholder="提单号"
+                                    placeholder="模糊查询"
                                     @select="handleSelect"
                                     prefix-icon="el-icon-search"
                             ></el-autocomplete>
@@ -270,7 +221,7 @@
                     <el-col :span="6">
                         <el-button style="margin-right:10px;" type="primary"
                                    icon="el-icon-circle-plus"
-                                   @click="dialogFormVisible = true">新建入库计划
+                                   @click="dialogFormVisible = true">导入word案件
                         </el-button>
                         <el-button type="success" icon="el-icon-refresh"
                                    @click="Refresh">刷新重置
@@ -305,67 +256,61 @@
                 </el-table-column>
                 <el-table-column
                         prop="extract_id"
-                        label="提单号"
+                        label="序号"
                         sortable
-                        width="180"
+                        width="80"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="number_id"
-                        label="清单号"
+                        label="编号"
                         sortable
-                        width="120"
+                        width="220"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="customer"
-                        label="客户名称"
+                        label="姓名"
                         sortable
-                        width="150"
+                        width="90"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="goods_name"
-                        label="品名"
+                        label="性别"
                         sortable
-                        width="100"
+                        width="80"
                 >
                 </el-table-column>
 
                 <el-table-column
                         prop='packing'
-                        label="包装"
-                        width="80"
+                        label="身份证号"
+                        width="220"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="quantity"
-                        label="数量(吨)"
+                        label="住址"
                         sortable
                         width="120"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="price_income_package"
-                        label="协议包干单价"
-                        width="130"
-                >
-                </el-table-column>
-                <el-table-column
-                        prop="price_cost_package"
-                        label="实际包干单价"
+                        prop="weight_box"
+                        label="文化程度"
                         width="130"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="price_income_package"
-                        label="应收(元)"
-                        width="120"
+                        label="立案日期"
+                        width="130"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="price_cost_package"
-                        label="应付(元)"
+                        label="导入日期"
                         width="120"
                 >
                 </el-table-column>
@@ -376,7 +321,7 @@
                 >
                     <template slot-scope="scope">
                         <el-tooltip class="item" effect="dark"
-                                    content="新增费用"
+                                    content="生成文书"
                                     placement="left">
                             <el-button
                                     @click="addFeeFormVisible = true"
@@ -396,7 +341,7 @@
                             </el-button>
                         </el-tooltip>
                         <el-tooltip class="item" effect="dark"
-                                    content="打印入库单"
+                                    content="打印"
                                     placement="top">
                             <el-button
                                     @click="printFeeFormVisible = true"
@@ -406,7 +351,7 @@
                             </el-button>
                         </el-tooltip>
                         <el-tooltip class="item" effect="dark"
-                                    content="撤销计划"
+                                    content="删除"
                                     placement="top">
                             <el-button
                                     @click.native.prevent="handleDelete(scope.$index, scope.row)"

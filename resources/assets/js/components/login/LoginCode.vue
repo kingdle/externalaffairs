@@ -1,6 +1,6 @@
 <template>
     <form class="form-signin" @submit.prevent="login">
-        <img class="mb-4" src="https://images.veg.kim/pc/housekeeping-code.png" alt="" width="180" height="160">
+        <!--<img class="mb-4" src="https://images.veg.kim/pc/housekeeping-code.png" alt="" width="180" height="160">-->
     </form>
 </template>
 

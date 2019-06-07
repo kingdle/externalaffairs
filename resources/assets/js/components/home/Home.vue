@@ -12,12 +12,12 @@
                             <div class="col-sm-4 col-12 mg-home-top">
                                 <div class="row text-center" style="white-space:nowrap;">
                                     <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">待审批数</h5>
+                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">待办案件</h5>
                                         <p class="card-text text-secondary red" style="white-space:nowrap;">
                                             12{{mgCharts.albumsCount}}</p>
                                     </div>
                                     <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">已审批数</h5>
+                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">已办案件</h5>
                                         <p class="card-text text-secondary" style="white-space:nowrap;">
                                             203{{mgCharts.dynamicsCount}}</p>
                                     </div>
@@ -27,12 +27,12 @@
                             <div class="col-sm-4 col-12 mg-home-top">
                                 <div class="row text-center" style="border-right:1px solid #eaeaea;border-left:1px solid #eaeaea">
                                     <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">接待中</h5>
+                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">进行中</h5>
                                         <p class="card-text text-secondary red" style="white-space:nowrap;">
                                            53{{mgCharts.albumsCount}}</p>
                                     </div>
                                     <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">完成接待</h5>
+                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">转出</h5>
                                         <p class="card-text text-secondary" style="white-space:nowrap;">
                                             123{{mgCharts.dynamicsCount}}</p>
                                     </div>
@@ -42,12 +42,12 @@
                             <div class="col-sm-4 col-12 mg-home-top">
                                 <div class="row text-center" style="white-space:nowrap;">
                                     <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">礼品库存</h5>
+                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">待存档</h5>
                                         <p class="red card-text text-secondary" style="white-space:nowrap;">
                                             100{{mgCharts.albumsCount}}</p>
                                     </div>
                                     <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">已发放礼品</h5>
+                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">已存档</h5>
                                         <p class="card-text text-secondary" style="white-space:nowrap;">
                                             123{{mgCharts.dynamicsCount}}</p>
                                     </div>
@@ -65,10 +65,10 @@
                         <div class="mg-business">
                             <div class="mb-3">
                                 <span class="text-success text-bold m-r-5">|</span>
-                                <span class="vertical-middle">热门场馆</span>
+                                <span class="vertical-middle">热门案件</span>
                             </div>
                             <div class="col-12 text-center">
-                               暂停开发
+                               未设计
                             </div>
                         </div>
                     </div>
@@ -82,10 +82,10 @@
                         <div class="mg-business">
                             <div class="mb-3">
                                 <span class="text-success text-bold m-r-5">|</span>
-                                <span class="vertical-middle">热门酒店</span>
+                                <span class="vertical-middle">用户排名</span>
                             </div>
                             <div class="col-12 text-center">
-                                暂停开发
+                                未设计
                             </div>
                         </div>
                     </div>

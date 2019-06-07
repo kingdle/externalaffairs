@@ -1,12 +1,11 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center padding-top">
             <div class="col-md-3">
                 <div class="text-center">
                     <login-form></login-form>
                 </div>
             </div>
-
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
@@ -28,7 +27,9 @@
     }
 </script>
 <style>
-
+.padding-top{
+    padding-top: 120px;
+}
 
     .form-signin {
         width: 100%;

@@ -132,7 +132,7 @@
                     <el-col :span="6">
                             <span class="broad-title">
                                 <span class="text-success text-bold m-r-5">|</span>
-                                客户协议管理
+                                文书模板管理
                             </span>
                     </el-col>
                     <el-col :span="12">
@@ -149,7 +149,7 @@
                     <el-col :span="6">
                         <el-button style="margin-right:10px;" type="primary"
                                    icon="el-icon-circle-plus"
-                                   @click="dialogFormVisible = true">新建协议
+                                   @click="dialogFormVisible = true">新建模板
                         </el-button>
                         <el-button type="success" icon="el-icon-refresh"
                                    @click="Refresh">刷新重置
@@ -173,26 +173,26 @@
                 </el-table-column>
                 <el-table-column
                         prop="customer"
-                        label="客户名称"
+                        label="模板名称"
                         sortable
                         width="200"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="number_id"
-                        label="协议编号"
+                        label="所属部门"
                         width="130"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="price_income_package"
-                        label="协议年度"
+                        label="参考附件"
                         width="80"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="quantity"
-                        label="联系人"
+                        label="管理人"
                         sortable
                         width="120"
                 >
